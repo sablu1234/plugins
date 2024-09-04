@@ -13,11 +13,20 @@
 */
 
 if(!function_exists('mblooddonatonlist')){
-function mblooddonatonlist(){
-   $list="hadi jaman";
-   return $list;
+function mblooddonatonlist($atts = array(),$content=null,$tag){
+
+    array_change_key_case((array)$atts,CASE_LOWER);
+    $selfcontent="<div class='primary'>";
+    $selfcontent.=apply_filters('the_content',$content);
+
+    $selfcontent.="</div>";
+   return $selfcontent;
 }
 }
-add_shortcode( 'mbinfolist','mblooddonatonlist')
+
+if(!shortcode_exists('mbinfolist')){
+    add_shortcode( 'mbinfolist','mblooddonatonlist');  
+}
+
 
 ?>
