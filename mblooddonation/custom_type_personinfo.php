@@ -1,19 +1,4 @@
-<?php 
-/*
-
-* Plugin Name: Blood Donation
-* Plugin URL: 
-* Description: Use this Shortcode [mb_personinfos] For get Person infos
-* Version: 1.0.0
-* Requires at least: 5.2
-* Requires PHP: 7.2
-* Author: Hadi Jaman
-* Author URI: https://www.facebook.com/md.doulot.3
-
-*/
-
-
-
+<?php
 
 
 if(!function_exists('Mamurjor_blood_personinfo')){
@@ -58,62 +43,4 @@ if(!function_exists('Mamurjor_blood_personinfo')){
     }
 }
 add_action( 'init','Mamurjor_blood_personinfo');
-
-//Meta BOxes
-if(!function_exists('mbmycellfield')){
-    function mbmycellfield(){
-        
-    }
-}
-if(!function_exists('mb_mymetapersoninfo')){
-    function mb_mymetapersoninfo(){
-        add_meta_box(
-            'mb_box_id',
-            'Cell Number',
-            'mbmycellfield',
-            'mb_personinfo'
-        );
-    }
-}
-
-add_action('add_meta_boxes','mb_mymetapersoninfo');
-
-    
-    if(!function_exists('get_mb_personinfos')){
-        function get_mb_personinfos($atts=array(),$content=null,$tag=''){
-            ob_start();
-           
-            
-            $the_personinfo = new WP_Query(array(
-                'post_type'=>'mb_personinfo',
-                'posts_per_page'=> 8, 
-            ));
-            while($the_personinfo->have_posts(  )){
-                $the_personinfo->the_post();
-                ?>
-                <div class="mama">
-                    <h2><?php esc_html(the_title());?></h2>
-                    <?php esc_html(the_content());?>
-                </div>
-                <?php
-            }
-            
-          
-            $content=ob_get_clean();
-            return $content;
-        }
-    }
-    if(!shortcode_exists('mb_personinfos')){
-        add_shortcode( 'mb_personinfos','get_mb_personinfos');  
-    }
-
-
-
-
-
-
-
-
-
-    
 ?>
