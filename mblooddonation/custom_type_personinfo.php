@@ -1,6 +1,4 @@
 <?php
-
-
 if(!function_exists('Mamurjor_blood_personinfo')){
     function Mamurjor_blood_personinfo(){
 
