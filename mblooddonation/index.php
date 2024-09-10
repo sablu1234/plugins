@@ -38,13 +38,5 @@ include(plugin_dir_path(__FILE__).'option_api.php');
 //Setting API
 include(plugin_dir_path(__FILE__).'setting_api.php');
 
-
-
-
-
-
-
-
-
     
 ?>
